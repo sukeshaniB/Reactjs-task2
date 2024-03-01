@@ -1,8 +1,7 @@
-// src/components/ProfileList.js
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import fetchMoreProfiles from '../utils/api'; // Import the utility function
+import fetchMoreProfiles from '../utils/api'; 
 
 const ListContainer = styled.div`
   max-width: 600px;
@@ -21,19 +20,23 @@ const ProfileItem = styled.div`
   margin-bottom: 10px;
 `;
 
-const ProfileList = ({ profiles, setProfiles }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [hasMore, setHasMore] = useState(true);
-    const [currentPage, setCurrentPage] = useState(1);
-  
-    const filteredProfiles = profiles.filter(
-      (profile) =>
-        profile.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        profile.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  
+const NoResultsMessage = styled.p`
+  text-align: center;
+  color: #999;
+`;
 
-   const loadMoreData = async () => {
+const ProfileList = ({ profiles }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [hasMore, setHasMore] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredProfiles = profiles.filter(
+    (profile) =>
+      profile.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      profile.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const loadMoreData = async () => {
     try {
       const newProfiles = await fetchMoreProfiles(currentPage + 1);
       if (newProfiles.length === 0) {
@@ -42,12 +45,11 @@ const ProfileList = ({ profiles, setProfiles }) => {
       }
 
       setCurrentPage((prevPage) => prevPage + 1);
-      setProfiles((prevProfiles) => [...prevProfiles, ...newProfiles]); // Use props.setProfiles to update the state
+      setHasMore((prevHasMore) => [...prevHasMore, ...newProfiles]);
     } catch (error) {
       console.error('Error fetching more profiles:', error);
     }
   };
-
 
   return (
     <ListContainer>
@@ -63,13 +65,17 @@ const ProfileList = ({ profiles, setProfiles }) => {
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
       >
-        {filteredProfiles.map((profile, index) => (
-          <ProfileItem key={index}>
-            <div>Name: {profile.name}</div>
-            <div>Email: {profile.email}</div>
-            {/* Display other profile details */}
-          </ProfileItem>
-        ))}
+        {filteredProfiles.length > 0 ? (
+          filteredProfiles.map((profile, index) => (
+            <ProfileItem key={index}>
+              <div>Name: {profile.name}</div>
+              <div>Email: {profile.email}</div>
+              {/* Display other profile details */}
+            </ProfileItem>
+          ))
+        ) : (
+          <NoResultsMessage>No matching profiles found.</NoResultsMessage>
+        )}
       </InfiniteScroll>
     </ListContainer>
   );

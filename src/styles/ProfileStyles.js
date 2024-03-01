@@ -1,4 +1,3 @@
-// src/styles/ProfileStyles.js
 import styled from 'styled-components';
 
 export const ListContainer = styled.div`
@@ -18,4 +17,3 @@ export const ProfileItem = styled.div`
   margin-bottom: 10px;
 `;
 
-// Add more styles as needed
