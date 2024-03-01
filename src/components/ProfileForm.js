@@ -6,11 +6,13 @@ const FormContainer = styled.form`
   flex-direction: column;
   max-width: 300px;
   margin: 20px auto;
+  
 `;
 
 const Input = styled.input`
   margin-bottom: 10px;
   padding: 8px;
+
 `;
 
 const Button = styled.button`

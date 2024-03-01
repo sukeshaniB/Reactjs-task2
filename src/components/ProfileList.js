@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import fetchMoreProfiles from '../utils/api'; 
 
 const ListContainer = styled.div`
+
   max-width: 600px;
   margin: 20px auto;
 `;
