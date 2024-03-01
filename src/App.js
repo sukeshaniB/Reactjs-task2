@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import ProfileForm from './components/ProfileForm';
+import ProfileList from './components/ProfileList';
 
-function App() {
+const AppContainer = styled.div`
+  text-align: center;
+`;
+
+const App = () => {
+  const [profiles, setProfiles] = useState([]);
+
+  const addProfile = (newProfile) => {
+    setProfiles((prevProfiles) => [...prevProfiles, newProfile]);
+  };
+
+  useEffect(() => {
+    // Load profiles from JSON file
+    fetch('/profiles.json')
+      .then((response) => response.json())
+      .then((data) => setProfiles(data))
+      .catch((error) => console.error('Error loading profiles:', error));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <h1>Profile Management</h1>
+      <ProfileForm addProfile={addProfile} />
+      <ProfileList profiles={profiles} setProfiles={setProfiles} /> {/* Pass setProfiles as a prop */}
+    </AppContainer>
   );
-}
+};
 
 export default App;

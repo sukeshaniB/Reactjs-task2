@@ -1,0 +1,60 @@
+// public/profiles.json
+[
+    {
+      "name": "John Doe",
+      "age": 30,
+      "phone": "123-456-7890",
+      "email": "john@example.com",
+      "skills": "React, JavaScript, CSS",
+      "address": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "country": "USA"
+    },
+    {
+      "name": "Jane Smith",
+      "age": 25,
+      "phone": "987-654-3210",
+      "email": "jane@example.com",
+      "skills": "Node.js, MongoDB, Express",
+      "address": "456 Oak St",
+      "city": "Sometown",
+      "state": "NY",
+      "country": "USA"
+    },
+    {
+      "name": "Bob Johnson",
+      "age": 35,
+      "phone": "555-123-4567",
+      "email": "bob@example.com",
+      "skills": "Angular, TypeScript, HTML",
+      "address": "789 Pine St",
+      "city": "Otherplace",
+      "state": "TX",
+      "country": "USA"
+    },
+    {
+      "name": "Alice Brown",
+      "age": 28,
+      "phone": "444-789-0123",
+      "email": "alice@example.com",
+      "skills": "Vue.js, CSS, Python",
+      "address": "101 Oak St",
+      "city": "Newville",
+      "state": "CA",
+      "country": "USA"
+    },
+    {
+      "name": "Charlie Wilson",
+      "age": 40,
+      "phone": "111-222-3333",
+      "email": "charlie@example.com",
+      "skills": "Java, Spring Boot, MySQL",
+      "address": "222 Elm St",
+      "city": "Somecity",
+      "state": "WA",
+      "country": "USA"
+    }
+    // Add more profiles as needed
+  ]
+  
