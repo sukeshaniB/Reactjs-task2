@@ -16,9 +16,11 @@ const SearchInput = styled.input`
 `;
 
 const ProfileItem = styled.div`
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+background-color: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+padding: 14px;
+margin-bottom: 20px;
 `;
 
 const NoResultsMessage = styled.p`
